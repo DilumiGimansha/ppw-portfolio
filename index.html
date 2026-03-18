@@ -1186,16 +1186,87 @@
     }
 
     /* ══════════════════════════════════════════════
-   RESPONSIVE
+   HAMBURGER MENU BUTTON
+   ══════════════════════════════════════════════ */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 300;
+      background: linear-gradient(135deg, var(--navy), #0C3352);
+      border: 1px solid rgba(23, 184, 168, 0.25);
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      transition: background 0.2s;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Overlay when sidebar is open on mobile */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 99;
+    }
+
+    .sidebar-overlay.visible {
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
    ══════════════════════════════════════════════ */
     @media (max-width: 900px) {
+      .hamburger {
+        display: flex;
+      }
+
       .sidebar {
-        display: none;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
       }
 
       .main-wrap {
         margin-left: 0;
         padding: 1.5rem 1rem;
+      }
+
+      .cover {
+        padding: 3rem 2rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+        min-height: auto;
+      }
+
+      .cover-right {
+        align-items: center;
       }
 
       .cover-meta {
@@ -1216,6 +1287,137 @@
 
       .photo-placeholder {
         max-width: 180px;
+      }
+
+      .cert-meta {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .page-body {
+        padding: 1.5rem 1.5rem;
+      }
+
+      .cv-row {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+      }
+
+      .cv-row .cv-date {
+        width: 100%;
+        order: 3;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 600px)
+   ══════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      html { font-size: 15px; }
+
+      .main-wrap {
+        padding: 1rem 0.75rem;
+      }
+
+      .cover {
+        padding: 2rem 1.25rem;
+        border-radius: 10px;
+      }
+
+      .cover-avatar {
+        width: 150px;
+        height: 150px;
+      }
+
+      .cover-name {
+        font-size: 1.8rem;
+      }
+
+      .cover-sub {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cover-badge {
+        margin-bottom: 1.5rem;
+      }
+
+      .cover-meta {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .page {
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+      }
+
+      .page-header {
+        padding: 0.9rem 1.2rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .page-header h2 {
+        font-size: 1.05rem;
+      }
+
+      .page-body {
+        padding: 1.2rem 1rem;
+      }
+
+      .cert-meta {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .cert-header {
+        flex-wrap: wrap;
+      }
+
+      .cv-skills-grid {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+
+      .cv-skills-grid .sk {
+        margin-top: 0.4rem;
+        color: var(--teal);
+      }
+
+      .cv-name {
+        font-size: 1.5rem;
+      }
+
+      .toc-table .toc-pg {
+        display: none;
+      }
+
+      .swot-box ul li {
+        font-size: 0.85rem;
+      }
+
+      .profile-row {
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .profile-label {
+        min-width: unset;
+      }
+
+      .section-intro {
+        font-size: 0.9rem;
+      }
+
+      .journal-header {
+        flex-wrap: wrap;
+      }
+
+      .print-btn {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.7rem 1.1rem;
+        font-size: 0.82rem;
       }
     }
   </style>
@@ -1943,6 +2145,45 @@
     </section>
 
   </div><!-- end main-wrap -->
+
+  <!-- HAMBURGER BUTTON -->
+  <button class="hamburger no-print" id="hamburgerBtn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- SIDEBAR OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MOBILE NAV SCRIPT -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      hamburgerBtn.classList.add('open');
+      overlay.classList.add('visible');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      overlay.classList.remove('visible');
+    }
+
+    hamburgerBtn.addEventListener('click', function() {
+      sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+    overlay.addEventListener('click', closeSidebar);
+
+    document.querySelectorAll('.sidebar nav a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) closeSidebar();
+      });
+    });
+  </script>
 
   <!-- PRINT BUTTON -->
 
