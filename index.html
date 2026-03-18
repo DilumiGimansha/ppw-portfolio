@@ -603,9 +603,29 @@
       color: var(--white);
     }
 
+    .journal-body {
+      padding: 0.4rem 0 0 0;
+    }
+
     .journal-body p {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.85rem;
       line-height: 1.75;
+      position: relative;
+      padding-left: 1.4rem;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-align: justify;
+    }
+
+    .journal-body p::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .journal-body p:last-child {
@@ -752,6 +772,7 @@
 
     .goal-item {
       margin-bottom: 1.5rem;
+      padding-left: 1.2rem;
     }
 
     .goal-item h4 {
@@ -1265,8 +1286,17 @@
         <span class="sec-num">TOC</span>
         <h2>Table of Contents</h2>
       </div>
-      <div class="page-body">
-        <table class="toc-table">
+      <div class="page-body" style="background: linear-gradient(135deg, #EEF6FB 0%, #E6F4F1 100%); position: relative; overflow: hidden;">
+
+        <!-- Circle watermarks -->
+        <span style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;border:28px solid rgba(23,184,168,0.13);pointer-events:none;"></span>
+        <span style="position:absolute;top:-20px;right:-20px;width:130px;height:130px;border-radius:50%;border:18px solid rgba(14,122,112,0.10);pointer-events:none;"></span>
+        <span style="position:absolute;bottom:-70px;left:-70px;width:260px;height:260px;border-radius:50%;border:32px solid rgba(23,184,168,0.10);pointer-events:none;"></span>
+        <span style="position:absolute;bottom:-30px;left:-30px;width:150px;height:150px;border-radius:50%;border:20px solid rgba(10,34,64,0.07);pointer-events:none;"></span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;border-radius:50%;border:2px solid rgba(23,184,168,0.07);pointer-events:none;"></span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:2px solid rgba(23,184,168,0.06);pointer-events:none;"></span>
+
+        <table class="toc-table" style="position:relative;z-index:1;">
           <tr>
             <td><span class="toc-num">01</span></td>
             <td class="toc-title">Introduction</td>
@@ -1380,6 +1410,12 @@
             <p>I am confident that the skills, knowledge, and values I have gained throughout this journey will allow me
               to make a meaningful and lasting contribution to the field of Quality Assurance, and I look forward to the
               exciting opportunities that lie ahead.</p>
+			  <span style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;border:28px solid rgba(23,184,168,0.13);pointer-events:none;"></span>
+        <span style="position:absolute;top:-20px;right:-20px;width:130px;height:130px;border-radius:50%;border:18px solid rgba(14,122,112,0.10);pointer-events:none;"></span>
+        <span style="position:absolute;bottom:-70px;right:-70px;width:260px;height:260px;border-radius:50%;border:32px solid rgba(23,184,168,0.10);pointer-events:none;"></span>
+        <span style="position:absolute;bottom:-30px;right:-30px;width:150px;height:150px;border-radius:50%;border:20px solid rgba(10,34,64,0.07);pointer-events:none;"></span>
+        <span style="position:absolute;top:50%;right:50%;transform:translate(-50%,-50%);width:340px;height:340px;border-radius:50%;border:2px solid rgba(23,184,168,0.07);pointer-events:none;"></span>
+        <span style="position:absolute;top:50%;right:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:2px solid rgba(23,184,168,0.06);pointer-events:none;"></span>
           </div>
           <div style="display:flex;align-items:flex-start;justify-content:center;padding-top:0.5rem;">
             <img
@@ -1410,7 +1446,7 @@
               business writing requires clarity, conciseness, formality, and a strong awareness of the audience. One
               important lesson was the principle of conciseness. I realised that I often used unnecessarily long phrases
               when shorter and clearer alternatives could communicate the same idea more effectively.</p>
-            <p>I also found the guidance on formal language and inclusivity very valuable. Learning to avoid
+           <p> I also found the guidance on formal language and inclusivity very valuable. Learning to avoid
               contractions, reduce passive voice, and replace informal words with more precise terms helped improve the
               quality of my writing. As a future Quality Assurance Engineer, I will need to write defect reports, test
               cases, and professional emails. Therefore, clear and professional writing is an essential skill that I
@@ -1708,11 +1744,7 @@
         <h2>Evidence of a Skill Course</h2>
       </div>
       <div class="page-body">
-        <p class="section-intro">As part of my commitment to continuous personal and professional development, I have
-          actively pursued both technical and soft skill development through recognised institutions and platforms over
-          the past year. The following certifications reflect my dedication to expanding my knowledge beyond the
-          classroom and equipping myself with the skills necessary to thrive as a Quality Assurance Engineer in a
-          competitive and rapidly evolving industry.</p>
+        
 
         <!-- Cert 01 -->
         <div class="cert-card">
