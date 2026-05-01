@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PPW Portfolio | Dilumi</title>
+  <title>PPW Portfolio | Dilumi Gimansha</title>
 
   <link rel="icon" type="image/png" href="https://dilumipriyadarshana.github.io/ppw-portfolio/favicon.png" />
   <link
@@ -1204,7 +1204,7 @@
       justify-content: center;
       gap: 5px;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
       transition: background 0.2s;
     }
 
@@ -1217,16 +1217,24 @@
       transition: transform 0.3s, opacity 0.3s;
     }
 
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     /* Overlay when sidebar is open on mobile */
     .sidebar-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0, 0, 0, 0.55);
       z-index: 99;
     }
 
@@ -1312,7 +1320,9 @@
    RESPONSIVE — MOBILE (≤ 600px)
    ══════════════════════════════════════════════ */
     @media (max-width: 600px) {
-      html { font-size: 15px; }
+      html {
+        font-size: 15px;
+      }
 
       .main-wrap {
         padding: 1rem 0.75rem;
@@ -2173,13 +2183,13 @@
       overlay.classList.remove('visible');
     }
 
-    hamburgerBtn.addEventListener('click', function() {
+    hamburgerBtn.addEventListener('click', function () {
       sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
     });
     overlay.addEventListener('click', closeSidebar);
 
-    document.querySelectorAll('.sidebar nav a').forEach(function(link) {
-      link.addEventListener('click', function() {
+    document.querySelectorAll('.sidebar nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
         if (window.innerWidth <= 900) closeSidebar();
       });
     });
